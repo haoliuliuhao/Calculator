@@ -94,6 +94,7 @@
       height:25px;
       border-radius:9px;
       position:relative;
+        font-family:"Comic Sans MS", cursive, sans-serif;
       box-shadow:2px 5px 2px #ccc inset;  /*向边框四周添加阴影效果*/
       right:-30px;
       top:40px;
@@ -102,15 +103,26 @@
       background-color: #9FE8F7;
     }
     #keyboard{
-        width:120px;
-        height:25px;
+        width:180px;
+        height:170px;
         background: #fff;
         border-radius:9px;
         position: relative;
-        top: 100px;
-        right:-70px;
+        top: 70px;
+        right:-35px;
         z-index:111;
 
+    }
+    .btn {
+        outline: none;
+        cursor: pointer;
+        font-size: 25px;
+        font-family:"Comic Sans MS", cursive, sans-serif;
+        background: #9FE8F7;
+        height: 35px;
+        margin: 2px 0 2px 5px;
+        width: 35px;
+        border-radius: 8px;
     }
     #left-arm,#right-arm {
       height: 270px;
