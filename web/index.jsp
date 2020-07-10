@@ -15,7 +15,6 @@
   <style>
 
     body {
-      /*设置背景为渐变色*/
       background-size:100% 100%;
       background: linear-gradient(#9FE8F7,#2C9FF2);
       background-repeat:no-repeat;
@@ -23,20 +22,18 @@
 
     }
     #baymax {
-      margin: 0 auto;/*居中*/
-      height: 1000px; /*设置高度*/
+      margin: 0 auto;
+      height: 1000px;
       overflow: hidden;
     }
 
     #head {
-      /*头部背景*/
       background: #fff;
       margin: 0 auto;
       margin-bottom: -20px;
-      /*头部大小*/
       height:60px;
       width: 100px;
-      border-radius: 60%;  /*设置下边框的样式*/
+      border-radius: 60%;
       border-bottom: 5px solid #e0e0e0;
       z-index: 100;
       position: relative;
@@ -45,14 +42,14 @@
       width: 11px;
       height: 13px;
       background: black;
-      border-radius: 50%; /*元素大小位置*/
+      border-radius: 50%;
       position: relative;
       top: 30px;
       left: 27px;
-      transform: rotate(8deg);/*旋转该元素*/
+      transform: rotate(8deg);
     }
     #eye2 {
-      transform: rotate(-8deg);/*旋转*/
+      transform: rotate(-8deg);
       left: 69px;
       top: 17px;
     }
@@ -70,7 +67,7 @@
       width: 180px;
       background: #fff;
       border-radius: 60%;
-      border: 5px solid #e0e0e0;/*设置边框*/
+      border: 5px solid #e0e0e0;
       border-top: none;
       z-index: 1;
     }
@@ -95,8 +92,8 @@
       border-radius:9px;
       position:relative;
         font-family:"Comic Sans MS", cursive, sans-serif;
-      box-shadow:2px 5px 2px #ccc inset;  /*向边框四周添加阴影效果*/
-      right:-30px;
+      box-shadow:2px 5px 2px #ccc inset;
+      right:-10px;
       top:40px;
       z-index:111;
       border:1px solid #ccc;
@@ -123,6 +120,42 @@
         margin: 2px 0 2px 5px;
         width: 35px;
         border-radius: 8px;
+    }
+    .btn_operator{
+        outline: none;
+        cursor: pointer;
+        font-size: 25px;
+        font-family:"Comic Sans MS", cursive, sans-serif;
+        background: #D3D3D3;
+        height: 35px;
+        margin: 2px 0 2px 5px;
+        width: 35px;
+        border-radius: 8px;
+    }
+    .btn_equal{
+        outline: none;
+        cursor: pointer;
+        font-size: 25px;
+        font-family:"Comic Sans MS", cursive, sans-serif;
+        background: #FF7F50;
+        height: 35px;
+        margin: 2px 0 2px 5px;
+        width: 35px;
+        border-radius: 8px;
+    }
+    .btn_clear{
+        background-color:	#FF7F50;
+        width:25px;
+        height:25px;
+        outline: none;
+        cursor: pointer;
+        border-radius:8px;
+        position:relative;
+        font-family:"Comic Sans MS", cursive, sans-serif;
+        right:-10px;
+        top:40px;
+        z-index:111;
+
     }
     #left-arm,#right-arm {
       height: 270px;
@@ -192,58 +225,81 @@
       transform: rotate(1deg);
     }
   </style>
+    <script>
+   <!--清零-->
+   function clearout(){
+           document.getElementById("display").value = "";
+           document.getElementById("display").focus();
+   };
+  <!--取值-->
+        function get(value) {
+            document.getElementById("display").value += value;
+        };
+
+  <!--计算-->
+        function calculate() {
+            var result = 0;
+            result = document.getElementById("display").value;
+            document.getElementById("display").value = "";
+            document.getElementById("display").value = eval(result);
+        };
+    </script>
 </head>
 <body>
 <div id="baymax">
-  <!-- 定义头-->
+  <!--头-->
   <div id="head">
     <div id="eye"></div>
     <div id="eye2"></div>
     <div id="mouth"></div>
   </div>
-  <!-- 定义身体-->
-  <div id="torso">
-    <input type="text" id="display" style="text-align:right" readOnly="true" value="0">
-  </div>
-  <!-- 定义肚子 -->
-  <div id="belly">
-      <div id="keyboard">
-      <input type="button" class="btn number" value="7" onclick="get(this.value);">
-      <input type="button" class="btn number" value="8" onclick="get(this.value);">
-      <input type="button" class="btn number" value="9" onclick="get(this.value);">
-      <input type="button" class="btn operator" value="+" onclick="get(this.value);">
-      <br>
-      <input type="button" class="btn number" value="4" onclick="get(this.value);">
-      <input type="button" class="btn number" value="5" onclick="get(this.value);">
-      <input type="button" class="btn number" value="6" onclick="get(this.value);">
-      <input type="button" class="btn operator" value="*" onclick="get(this.value);">
-      <br>
-      <input type="button" class="btn number" value="1" onclick="get(this.value);">
-      <input type="button" class="btn number" value="2" onclick="get(this.value);">
-      <input type="button" class="btn number" value="3" onclick="get(this.value);">
-      <input type="button" class="btn operator" value="-" onclick="get(this.value);">
-      <br>
-      <input type="button" class="btn number" value="0" onclick="get(this.value);">
-      <input type="button" class="btn operator" value="." onclick="get(this.value);">
-      <input type="button" class="btn operator" value="/" onclick="get(this.value);">
-      <input type="button" class="btn other" value="=" onclick="calculates();">
-  </div>
-      <div id="cover"></div>
-  </div>
-  <!-- 定义左手臂 -->
-  <div id="left-arm">
-    <div id="l-bigfinger"></div>
-    <div id="l-smallfinger"></div>
-  </div>
-  <!-- 定义右臂-->
-  <div id="right-arm">
-    <div id="r-bigfinger"></div>
-    <div id="r-smallfinger"></div>
-  </div>
-  <!-- 定义左腿 -->
-  <div id="left-leg"></div>
-  <!-- 定义右腿 -->
-  <div id="right-leg"></div>
-</div>
-</body>
-</html>
+    <!--身体-->
+     <div id="torso">
+        <div id="btn_clear">
+            <input type="button" class="btn_clear" value="C" onclick="clearout();">
+       <input type="text" id="display" style="text-align:right" readOnly="true" value="">
+     </div>
+     </div>
+      <!--肚子-->
+     <div id="belly">
+         <div id="keyboard">
+
+         <input type="button" class="btn" value="7" onclick="get(this.value);">
+         <input type="button" class="btn" value="8" onclick="get(this.value);">
+         <input type="button" class="btn" value="9" onclick="get(this.value);">
+         <input type="button" class="btn_operator" value="+" onclick="get(this.value);">
+         <br>
+         <input type="button" class="btn" value="4" onclick="get(this.value);">
+         <input type="button" class="btn" value="5" onclick="get(this.value);">
+         <input type="button" class="btn" value="6" onclick="get(this.value);">
+         <input type="button" class="btn_operator" value="*" onclick="get(this.value);">
+         <br>
+         <input type="button" class="btn" value="1" onclick="get(this.value);">
+         <input type="button" class="btn" value="2" onclick="get(this.value);">
+         <input type="button" class="btn" value="3" onclick="get(this.value);">
+         <input type="button" class="btn_operator" value="-" onclick="get(this.value);">
+         <br>
+         <input type="button" class="btn" value="0" onclick="get(this.value);">
+         <input type="button" class="btn_operator" value="." onclick="get(this.value);">
+         <input type="button" class="btn_operator" value="/" onclick="get(this.value);">
+         <input type="button" class="btn_equal" value="=" onclick="calculate();">
+     </div>
+         <div id="cover"></div>
+     </div>
+      <!--左手臂-->
+     <div id="left-arm">
+       <div id="l-bigfinger"></div>
+       <div id="l-smallfinger"></div>
+     </div>
+    <!--右臂-->
+     <div id="right-arm">
+       <div id="r-bigfinger"></div>
+       <div id="r-smallfinger"></div>
+     </div>
+     <!--左腿-->
+     <div id="left-leg"></div>
+     <!--右腿-->
+     <div id="right-leg"></div>
+   </div>
+   </body>
+   </html>
