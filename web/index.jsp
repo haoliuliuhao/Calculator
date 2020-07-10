@@ -89,7 +89,7 @@
       top: -20px;
       border-radius: 50%;
     }
-    #heart{
+    #display{
       width:120px;
       height:25px;
       border-radius:9px;
@@ -100,6 +100,17 @@
       z-index:111;
       border:1px solid #ccc;
       background-color: #9FE8F7;
+    }
+    #keyboard{
+        width:120px;
+        height:25px;
+        background: #fff;
+        border-radius:9px;
+        position: relative;
+        top: 100px;
+        right:-70px;
+        z-index:111;
+
     }
     #left-arm,#right-arm {
       height: 270px;
@@ -180,29 +191,32 @@
   </div>
   <!-- 定义身体-->
   <div id="torso">
-    <input type="text" id="heart" style="text-align:right" readOnly="true" value="0">
+    <input type="text" id="display" style="text-align:right" readOnly="true" value="0">
   </div>
   <!-- 定义肚子 -->
   <div id="belly">
-    <div id="cover"></div>
-    <input type="reset" id="res" value="C">
-    <input type="button" id="division" value="/">
-    <input type="button" id="ride" value="*">
-    <input type="button" id="add" value="+">
-    <input type="button" id="reduce" value="-">
-    <input type="button" id="round" value=".">
-    <input type="button" id="sum" value="=">
-
-    <input type="button" id="one" value="1">
-    <input type="button" id="two" value="2">
-    <input type="button" id="three" value="3">
-    <input type="button" id="four" value="4">
-    <input type="button" id="five" value="5">
-    <input type="button" id="six" value="6">
-    <input type="button" id="seven" value="7">
-    <input type="button" id="eight" value="8">
-    <input type="button" id="nine" value="9">
-    <input type="button" id="zero" value="0">
+      <div id="keyboard">
+      <input type="button" class="btn number" value="7" onclick="get(this.value);">
+      <input type="button" class="btn number" value="8" onclick="get(this.value);">
+      <input type="button" class="btn number" value="9" onclick="get(this.value);">
+      <input type="button" class="btn operator" value="+" onclick="get(this.value);">
+      <br>
+      <input type="button" class="btn number" value="4" onclick="get(this.value);">
+      <input type="button" class="btn number" value="5" onclick="get(this.value);">
+      <input type="button" class="btn number" value="6" onclick="get(this.value);">
+      <input type="button" class="btn operator" value="*" onclick="get(this.value);">
+      <br>
+      <input type="button" class="btn number" value="1" onclick="get(this.value);">
+      <input type="button" class="btn number" value="2" onclick="get(this.value);">
+      <input type="button" class="btn number" value="3" onclick="get(this.value);">
+      <input type="button" class="btn operator" value="-" onclick="get(this.value);">
+      <br>
+      <input type="button" class="btn number" value="0" onclick="get(this.value);">
+      <input type="button" class="btn operator" value="." onclick="get(this.value);">
+      <input type="button" class="btn operator" value="/" onclick="get(this.value);">
+      <input type="button" class="btn other" value="=" onclick="calculates();">
+  </div>
+      <div id="cover"></div>
   </div>
   <!-- 定义左手臂 -->
   <div id="left-arm">
